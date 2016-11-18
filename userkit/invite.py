@@ -21,6 +21,10 @@ class Invite(object):
     to_email = None
     token_raw = None
     invite_url = None
+    
+    greeting = None
+    body = None
+    signature = None
 
     def __init__(self, requestor, **kwargs):
         self._rq = requestor
