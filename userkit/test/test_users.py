@@ -31,6 +31,12 @@ class TestUsers(BaseTestCase):
         self.assertTrue(hasattr(l, 'next_page'))
         self.assertTrue(hasattr(l[0], 'username'))
 
+    def test_list_users_two(self):
+        l = self.uk.users.get_users(2)
+        self.assertIsInstance(l, list)
+        self.assertTrue(hasattr(l, 'next_page'))
+        self.assertTrue(hasattr(l[0], 'username'))
+
     def test_update_user(self):
         extras = {'score': 200}
         u = self.uk.users.create_user(email=rand_email(),
@@ -121,7 +127,7 @@ class TestUsers(BaseTestCase):
 
 
 class TestUsersMock(BaseMockTestCase):
-    """Tests which can't be run agains the live API server.
+    """Tests which can't be run against the live API server.
 
     For example: resetting a password when we don't have the reset
     token.
